@@ -1,1 +1,1 @@
-# Algoritmit-ja-Tekoaly-Harjoitustyo-
+# Algoritmit-ja-Tekoaly-Harjoitustyo
