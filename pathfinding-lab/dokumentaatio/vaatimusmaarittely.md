@@ -2,67 +2,52 @@
 
 **Opinto-ohjelma:** Tietojenkäsittelytiede, kandidaatin tutkinto
 
-## Projektin kuvaus
+Projektin tavoitteena on toteuttaa Pythonilla sovellus, jolla voidaan tutkia ja vertailla kahta reitinhakualgoritmia: A\*:aa ja Fringe Searchia. Sovelluksessa käyttäjä voi luoda kaksiulotteisen ruudukon, määrittää lähtö- ja maalipisteen sekä lisätä ruudukkoon esteitä. Tämän jälkeen käyttäjä voi suorittaa valitsemansa algoritmin ja tarkastella sen löytämää reittiä sekä hakuprosessin etenemistä.
 
-Pathfinding Lab on Pythonilla toteutettava sovellus, jonka avulla voidaan tutkia ja havainnollistaa reitinhakualgoritmien toimintaa. Sovelluksen ideana on näyttää, miten algoritmi etenee lähtöpisteestä kohti maalipistettä ja miten ympäristössä olevat esteet vaikuttavat reitin löytämiseen.
-
-Käyttäjä voi muodostaa kaksiulotteisen ruudukon, määrittää siihen lähtö- ja maalipisteen sekä lisätä esteitä vapaasti valitsemiinsa kohtiin. Tämän jälkeen käyttäjä voi suorittaa valitsemansa algoritmin ja tarkastella haun etenemistä käyttöliittymässä.
-
-Projektissa toteutetaan A\*-algoritmi ja Fringe Search. Niiden toimintaa vertaillaan erilaisilla kartoilla, jotta voidaan selvittää, miten kartan rakenne ja esteiden määrä vaikuttavat reitinhakuun. Vertailussa hyödynnetään esimerkiksi löydetyn reitin pituutta, tutkittujen solujen määrää ja suoritusaikaa.
-
-Tavoitteena on saada aikaan toimiva ja selkeä sovellus, jonka avulla reitinhakualgoritmien toimintaa voidaan tarkastella käytännössä.
+Projektin keskeinen osa on algoritmien toteuttaminen ja niiden oikean toiminnan varmistaminen. Visualisointi toimii algoritmien tutkimista ja vertailua tukevana ominaisuutena.
 
 ## Tekninen toteutus
 
-- Sovellus toteutetaan Python-ohjelmointikielellä.
-- Käyttöliittymä toteutetaan graafisena, jotta algoritmien etenemistä voidaan havainnollistaa visuaalisesti.
-- Ohjelma ja projektin dokumentaatio kirjoitetaan suomeksi.
-- Ohjelman rakenne suunnitellaan siten, että algoritmit, kartan käsittely ja käyttöliittymä ovat mahdollisimman selkeästi erotettuja toisistaan.
-- Algoritmien toimintaa varmistetaan automaattisilla yksikkötesteillä.
-- Projektista laaditaan asennus- ja käyttöohjeet.
+- Ohjelmointikieli: Python.
+- Sovellus toteutetaan graafisella käyttöliittymällä.
+- Sovellus ja dokumentaatio toteutetaan suomeksi.
+- Riippuvuuksien hallintaan käytetään Poetryä.
+- Testaus toteutetaan Pythonin unittest-kehyksellä.
+- Vertaisarviointia pystyn tekemään myös JavaScript- ja TypeScript-projekteista.
+
+Algoritmien toteutuksessa käytetään ruudukon esittämiseen kaksiulotteista tietorakennetta. A\* hyödyntää prioriteettijonoa tutkittavien solmujen järjestämiseen. Molemmissa algoritmeissa tarvitaan lisäksi tietorakenteita käsiteltyjen solmujen, kustannusten ja löydetyn reitin tallentamiseen.
 
 ## Toiminnalliset vaatimukset
 
-Sovelluksen tulee sisältää seuraavat ominaisuudet:
+Sovelluksen tulee mahdollistaa:
 
-- Käyttäjä voi luoda ja muokata kaksiulotteista ruudukkoa.
-- Käyttäjä voi määrittää lähtöpisteen ja maalipisteen.
-- Käyttäjä voi lisätä ja poistaa esteitä, jotka rajoittavat mahdollisia kulkureittejä.
-- Käyttäjä voi valita suoritettavan algoritmin A\*-algoritmin ja Fringe Searchin väliltä.
-- Sovellus etsii reitin lähtöpisteestä maalipisteeseen valitulla algoritmilla.
-- Käyttöliittymä näyttää haun etenemisen, jotta käyttäjä pystyy seuraamaan algoritmin toimintaa.
-- Sovellus näyttää löydetyn reitin selkeästi kartalla.
-- Jos reittiä ei ole mahdollista löytää, sovellus ilmoittaa siitä käyttäjälle.
-- Käyttäjä voi tyhjentää tai palauttaa kartan ja suorittaa uuden haun.
-- Sovellus kerää haun aikana tietoa, jonka avulla algoritmien toimintaa voidaan vertailla.
+- Kaksiulotteisen ruudukon luominen ja muokkaaminen.
+- Lähtö- ja maalipisteen määrittäminen.
+- Esteiden lisääminen ja poistaminen.
+- A\*- ja Fringe Search -algoritmin valitseminen ja suorittaminen.
+- Hakuprosessin ja löydetyn reitin visualisointi.
+- Tilanteen ilmoittaminen, jos reittiä ei löydy.
+- Algoritmien tulosten vertailu ja mittaustietojen näyttäminen.
 
-## Algoritmien vertailu
+## Algoritmien vertailu ja vaativuudet
 
-Algoritmien vertailu on yksi projektin keskeisistä tavoitteista. Vertailu toteutetaan suorittamalla algoritmit samoilla kartoilla ja samoista lähtö- ja maalipisteistä.
+Algoritmeja vertaillaan samoilla ruudukoilla ja samoilla lähtö- ja maalipisteillä. Vertailussa tarkastellaan löydetyn reitin pituutta, tutkittujen solmujen määrää ja suoritusaikaa.
 
-Vertailussa tarkastellaan seuraavia asioita:
+A\*:n aikavaativuuden yleinen graafihakutoteutukseen perustuva arvio on \(O((V+E)\log V)\), kun käytössä on binäärikeolla toteutettu prioriteettijono ja tietyt algoritmin toimintaan liittyvät oletukset. Tilavaativuus on \(O(V)\).
 
-- **Reitin pituus:** kuinka monta askelta löydetty reitti sisältää.
-- **Tutkitut solut:** kuinka monta ruudukkosolua algoritmi käsittelee haun aikana.
-- **Suoritusaika:** kuinka kauan reitin löytäminen kestää.
+Fringe Searchin hakupuun pahimman tapauksen kokoa voidaan kuvata yleisellä arviolla \(O(b^d)\). Sen muistinkäyttö riippuu hakurintaman ja tallennettavien solmukohtaisten tietojen määrästä.
 
-Tulosten avulla voidaan tarkastella, miten algoritmien toiminta eroaa toisistaan ja millaisissa tilanteissa erot tulevat esiin. Vertailussa huomioidaan myös se, että reitin pituus ja suoritusaika eivät yksinään kerro kaikkea algoritmin toiminnasta.
+Algoritmien todelliseen suorituskykyyn vaikuttavat muun muassa ruudukon koko, esteiden määrä ja kartan rakenne.
 
-## Testaus ja luotettavuus
+## Testaus ja rajaukset
 
-Ohjelman keskeiset toiminnot testataan automaattisilla testeillä. Testauksessa varmistetaan, että algoritmit löytävät kelvollisen reitin silloin, kun sellainen on olemassa, ja tunnistavat tilanteet, joissa reittiä ei löydy.
+Algoritmien oikeellisuus varmistetaan automatisoiduilla yksikkötesteillä. Testeissä tarkastellaan esimerkiksi reitin löytymistä, esteiden huomioimista, reitin laillisuutta ja tilanteita, joissa reittiä ei ole mahdollista löytää.
 
-Lisäksi testataan erilaisten karttojen käsittelyä, esteiden vaikutusta reitinhakuun sekä löydetyn reitin oikeellisuutta. Reitti ei saa kulkea esteiden läpi, ja sen tulee noudattaa sovelluksessa määriteltyjä liikkumissääntöjä.
-
-Ohjelman tulee käsitellä virheelliset käyttötilanteet hallitusti niin, etteivät ne aiheuta sovelluksen odottamatonta kaatumista.
-
-## Rajaukset
-
-Projektin ensimmäinen versio keskittyy kaksiulotteiseen ruudukkoon ja kahden reitinhakualgoritmin toimintaan. Sovellukseen ei toteuteta esimerkiksi kolmiulotteisia ympäristöjä, liikkuvia esteitä, verkkopohjaisia karttoja tai käyttäjätilejä.
-
-Mahdolliset lisäominaisuudet toteutetaan vasta, kun keskeiset algoritmit, käyttöliittymä ja testaus toimivat luotettavasti.
+Sovellus rajataan kaksiulotteisiin ruudukoihin ja kahteen reitinhakualgoritmiin. Projektin ulkopuolelle jätetään esimerkiksi kolmiulotteiset kartat, liikkuvat esteet ja verkkopohjaiset karttapalvelut. Mahdolliset lisäominaisuudet toteutetaan vasta ydintoiminnallisuuksien valmistuttua.
 
 ## Lähteet
 
 - [A\* Search Algorithm – Red Blob Games](https://www.redblobgames.com/pathfinding/a-star/introduction.html)
+- [A\* Search Algorithm – Wikipedia](https://en.wikipedia.org/wiki/A*_search_algorithm)
+- [Fringe Search: Beating A\* at Pathfinding on Game Maps – Björnsson ym. (2005)](https://webdocs.cs.ualberta.ca/~holte/Publications/fringe.pdf)
 - [Fringe Search – Wikipedia](https://en.wikipedia.org/wiki/Fringe_search)
