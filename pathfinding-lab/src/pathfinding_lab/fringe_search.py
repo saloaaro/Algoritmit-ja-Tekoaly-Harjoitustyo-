@@ -1,11 +1,14 @@
+
 """Toteuttaa Fringe Search -reitinhakualgoritmin."""
 
 import time
+
 
 class FringeSearch:
     """Toteuttaa Fringe Search -reitinhakualgoritmin."""
 
     def __init__(self, ruudukko):
+        """Alustaa algoritmin käytettävällä ruudukolla."""
         self.ruudukko = ruudukko
         self.tutkitut_ruudut = []
         self.suoritusaika = 0.0
@@ -47,6 +50,7 @@ class FringeSearch:
         edeltajat = {}
         kustannukset = {lahto: 0}
 
+        # Alustetaan kustannusraja lähtöpisteen heuristiikalla.
         raja = self.heuristiikka(lahto, maali)
         nykyinen_jono = [lahto]
 
@@ -61,6 +65,8 @@ class FringeSearch:
                 kustannus = kustannukset[nykyinen]
                 arvio = kustannus + self.heuristiikka(nykyinen, maali)
 
+                # Siirretään liian suuren kustannusarvion ruutu
+                # käsiteltäväksi seuraavalla kierroksella.
                 if arvio > raja:
                     seuraava_raja = min(seuraava_raja, arvio)
                     seuraava_jono.append(nykyinen)
@@ -94,6 +100,8 @@ class FringeSearch:
                 return None
 
             raja = seuraava_raja
+
+            # Poistetaan seuraavan kierroksen jonosta päällekkäiset ruudut.
             nykyinen_jono = list(dict.fromkeys(seuraava_jono))
 
         self.suoritusaika = time.perf_counter() - alkuaika

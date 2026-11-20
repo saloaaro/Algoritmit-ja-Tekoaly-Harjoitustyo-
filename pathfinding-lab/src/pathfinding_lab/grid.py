@@ -1,8 +1,12 @@
+
 """Kuvaa reitinhakuun käytettävää kaksiulotteista ruudukkoa."""
+
 
 class Ruudukko:
     """Kuvaa reitinhakuun käytettävää kaksiulotteista ruudukkoa."""
+
     def __init__(self, leveys, korkeus):
+        """Alustaa ruudukon annetulla leveydellä ja korkeudella."""
         self.leveys = leveys
         self.korkeus = korkeus
         self.esteet = set()
@@ -28,6 +32,7 @@ class Ruudukko:
 
     def hae_naapurit(self, x, y):
         """Palauttaa annetun ruudun kuljettavissa olevat naapuriruudut."""
+        # Naapurit tarkistetaan järjestyksessä ylhäältä myötäpäivään.
         suunnat = [
             (0, -1),  # Ylös
             (1, 0),   # Oikealle

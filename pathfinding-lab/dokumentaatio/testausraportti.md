@@ -67,9 +67,20 @@ Testasin seuraavia toimintoja:
 - Tutkittujen ruutujen ja löydetyn reitin näyttäminen.
 - Molempien algoritmien vertailun käynnistäminen.
 - Vertailutulosten näyttäminen sivupaneelissa.
+- Ruudukon tyhjentäminen ja ohjelman sulkeminen.
 
-## 6. Yhteenveto
+Kaikki kokeilemani käyttöliittymän toiminnot toimivat odotetusti.
+
+## 6. Täydentävä testaus
+
+Yksikkötestien lisäksi testasin ohjelman toimintaa manuaalisesti erilaisilla ruudukoilla. Tarkoituksena oli varmistaa, että ohjelman eri osat toimivat yhdessä eikä testaus rajoitu pelkästään yksittäisiin metodeihin.
+
+Erityisesti testasin algoritmien vertailutoimintoa tilanteessa, jossa reittiä ei ole mahdollista löytää. Molemmat algoritmit suorittivat haun ja ilmoittivat, ettei reittiä löytynyt.
+
+Lisäksi testasin käyttöliittymän toimintaa eri kokoisilla ruudukoilla sekä ruudukon muokkaamista ja algoritmien käynnistämistä. Näissä testeissä ei havaittu ongelmia.
+
+## 7. Yhteenveto
 
 Testauksen perusteella ohjelman tärkeimmät toiminnot toimivat tällä hetkellä suunnitellusti. Kaikki 29 yksikkötestiä menivät läpi ja testikattavuudeksi saatiin 97 %. Erityisesti ruudukon ja reitinhakualgoritmien toiminta on testattu useilla erilaisilla tilanteilla.
 
-Käyttöliittymän toiminta on lisäksi tarkistettu manuaalisesti. Testauksen aikana löytyneet pienet ongelmat on korjattu. Testausta on tarkoitus jatkaa vielä projektin seuraavien viikkojen aikana, kun ohjelmaa kehitetään eteenpäin.
+Käyttöliittymän toiminta ja algoritmien vertailu on lisäksi tarkistettu manuaalisesti. Testauksen aikana löytyneet pienet ongelmat on korjattu. Testausta on tarkoitus jatkaa vielä projektin seuraavien viikkojen aikana, kun ohjelmaa kehitetään eteenpäin.

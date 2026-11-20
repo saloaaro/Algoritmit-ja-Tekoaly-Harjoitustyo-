@@ -82,6 +82,7 @@ def piirra_ruudukko(
             if reitti and koordinaatti in reitti:
                 vari = REITIN_VARI
 
+            # Lähtö- ja maalipisteen väri ohittaa muut ruudun värit.
             if koordinaatti == lahto:
                 vari = LAHDON_VARI
             elif koordinaatti == maali:
@@ -127,9 +128,17 @@ def suorita_vertailu(ruudukko, lahto, maali):
         algoritmi = algoritmiluokka(ruudukko)
         algoritmi.hae_reitti(lahto, maali)
 
-    # Algoritmien mittausjärjestys vuorottelee. (tekemättä).
-    for _ in range(VERTAILU_TOISTOT):
-        for nimi, algoritmiluokka in algoritmit.items():
+    # Muodostetaan algoritmeista lista mittausjärjestyksen vaihtamista varten.
+    algoritmilista = list(algoritmit.items())
+
+    # Algoritmien mittausjärjestys vuorottelee.
+    for kierros in range(VERTAILU_TOISTOT):
+        if kierros % 2 == 1:
+            suoritusjarjestys = reversed(algoritmilista)
+        else:
+            suoritusjarjestys = algoritmilista
+
+        for nimi, algoritmiluokka in suoritusjarjestys:
             algoritmi = algoritmiluokka(ruudukko)
             reitti = algoritmi.hae_reitti(lahto, maali)
 
@@ -163,6 +172,7 @@ class PathfindingSovellus:
     """Hallinnoi reitinhakualgoritmien käyttöliittymää."""
 
     def __init__(self):
+        """Alustaa ikkunan, ruudukon ja käyttöliittymän tilan."""
         pygame.init()
 
         self.ikkuna = pygame.display.set_mode(
@@ -214,7 +224,7 @@ class PathfindingSovellus:
         self.animaation_askel = 1
 
         self.tulosviesti = (
-            "Valitse pisteet ja kaynnista reitinhaku."
+            "Valitse pisteet ja käynnistä reitinhaku."
         )
 
         self.kaynnissa = True
@@ -462,7 +472,7 @@ class PathfindingSovellus:
         piirra_teksti(
             self.ikkuna,
             self.pieni_fontti,
-            "Valitse toiminto ja muokkaa ruudukkoa hiirella.",
+            "Valitse toiminto ja muokkaa ruudukkoa hiirellä.",
             20,
             50
         )
@@ -748,8 +758,8 @@ class PathfindingSovellus:
             self.pieni_fontti,
             (
                 f"KA {tulos['keskiarvo']:.4f} ms"
-                f" | min {tulos['min']:.4f}"
-                f" | max {tulos['max']:.4f}"
+                f" | min {tulos['min']:.4f} ms"
+                f" | max {tulos['max']:.4f} ms"
             ),
             x,
             y + 21

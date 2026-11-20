@@ -1,12 +1,15 @@
+
 """Toteuttaa A*-reitinhakualgoritmin."""
 
 import heapq
 import time
 
+
 class AStar:
     """Toteuttaa A*-reitinhakualgoritmin."""
 
     def __init__(self, ruudukko):
+        """Alustaa algoritmin käytettävällä ruudukolla."""
         self.ruudukko = ruudukko
         self.tutkitut_ruudut = []
         self.suoritusaika = 0.0
@@ -32,6 +35,7 @@ class AStar:
 
         alkuaika = time.perf_counter()
 
+        # Avoimessa joukossa säilytetään tutkittavaksi odottavat ruudut.
         avoimet = []
         heapq.heappush(
             avoimet,
@@ -45,6 +49,7 @@ class AStar:
         while avoimet:
             _, kustannus, nykyinen = heapq.heappop(avoimet)
 
+            # Ohitetaan ruudut, jotka on jo tutkittu.
             if nykyinen in tutkitut:
                 continue
 
