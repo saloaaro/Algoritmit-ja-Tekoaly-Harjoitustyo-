@@ -29,3 +29,16 @@ Ohjelman käynnistäminen
 Käynnistä sovellus projektihakemistossa seuraavalla komennolla:
 
 poetry run python -m pathfinding_lab.visualizer
+
+Oikealla painikkeella poistetaan este ruudukolta.
+
+# Testien suorittaminen
+
+Projektin yksikkötestit suoritetaan projektihakemistossa seuraavalla komennolla:
+
+poetry run python -m unittest discover -s tests -v
+
+Testikattavuuden voi mitata komennoilla:
+
+poetry run coverage run -m unittest discover -s tests
+poetry run coverage report -m
